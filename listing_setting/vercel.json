@@ -2,7 +2,7 @@
     "builds": [
       {
         "src": "listing_setting/wsgi.py",
-        "use": "@vercel/python3.9",
+        "use": "@vercel/python",
         "config": {
           "maxLambdaSize": "50mb"
         }
