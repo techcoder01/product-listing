@@ -1,0 +1,29 @@
+{% load custom_filters %}
+
+<div class="dashboard-nav">
+    <div class="dashboard-nav-inner">
+        <ul data-submenu-title="Main">
+            <li class="{% if request.path == '/dashboard/' %}active{% endif %}"><a href="{% url 'dashboard' %}"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+            <li class="{% if request.path == '/bookings/' %}active{% endif %}"><a href="{% url 'bookings' %}"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
+            <li class="{% if request.path == '/wallet/' %}active{% endif %}"><a href="{% url 'wallet' %}"><i class="sl sl-icon-wallet"></i> Wallet</a></li>
+        </ul>
+        
+        <ul data-submenu-title="Listings">
+            <li class="{% if request.path|startswith:'/my-listing/' %}active{% endif %}"><a><i class="sl sl-icon-layers"></i> My Listings</a>
+                <ul>
+                    <li class="{% if active_tab == 'active' %}active{% endif %}"><a href="{% url 'my-listing' %}?tab=active">Active <span class="nav-tag green">6</span></a></li>
+                    <li class="{% if active_tab == 'pending' %}active{% endif %}"><a href="{% url 'my-listing' %}?tab=pending">Pending <span class="nav-tag yellow">1</span></a></li>
+                    <li class="{% if active_tab == 'expired' %}active{% endif %}"><a href="{% url 'my-listing' %}?tab=expired">Expired <span class="nav-tag red">2</span></a></li>
+                </ul>    
+            </li>
+            <li class="{% if request.path == '/reviews/' %}active{% endif %}"><a href="{% url 'reviews' %}"><i class="sl sl-icon-star"></i> Reviews</a></li>
+            <li class="{% if request.path == '/bookmarks/' %}active{% endif %}"><a href="{% url 'bookmarks' %}"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
+            <li class="{% if request.path == '/add-listings/' %}active{% endif %}"><a href="{% url 'add-listings' %}"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+        </ul>    
+
+        <ul data-submenu-title="Account">
+            <li class="{% if request.path == '/profile/' %}active{% endif %}"><a href="{% url 'profile' %}"><i class="sl sl-icon-user"></i> My Profile</a></li>
+            <li><a href="{% url 'logout' %}"><i class="sl sl-icon-power"></i> Logout</a></li>
+        </ul>
+    </div>
+</div>
