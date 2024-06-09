@@ -11,6 +11,12 @@ if ! command -v pip3 &> /dev/null; then
     python3 -m ensurepip --upgrade
 fi
 
+# Check if distutils is already installed
+if ! python3 -c "import distutils" &> /dev/null; then
+    echo "distutils is not installed, installing now..."
+    apt-get update && apt-get install -y python3-distutils
+fi
+
 # Install your dependencies
 pip3 install -r requirements.txt
 
