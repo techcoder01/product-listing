@@ -1,29 +1,29 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "listing_setting/wsgi.py",
-            "use": "@vercel/python",
-            "config": {
-                "installCommand": "pip install -r requirements.txt"
-            }
-        },
-        {
-            "src": "build.sh",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "staticfiles"
-            }
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "listing_setting/wsgi.py"
-        },
-        {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        }
-    ]
+  "version": 2,
+  "builds": [
+      {
+          "src": "listing_setting/wsgi.py",
+          "use": "@vercel/python",
+          "config": {
+              "runtime": "python3.9"
+          }
+      },
+      {
+          "src": "build.sh",
+          "use": "@vercel/static-build",
+          "config": {
+              "distDir": "staticfiles"
+          }
+      }
+  ],
+  "routes": [
+      {
+          "src": "/(.*)",
+          "dest": "listing_setting/wsgi.py"
+      },
+      {
+          "src": "/static/(.*)",
+          "dest": "/static/$1"
+      }
+  ]
 }

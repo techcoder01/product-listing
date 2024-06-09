@@ -1,10 +1,21 @@
 #!/bin/bash
 
-# Activate the virtual environment if you're using one
-# source venv/bin/activate
+# Check if Python is installed
+if ! command -v python3 &> /dev/null
+then
+    echo "Python3 could not be found"
+    exit 1
+fi
+
+# Check if pip is installed
+if ! command -v pip3 &> /dev/null
+then
+    echo "pip3 could not be found"
+    exit 1
+fi
 
 # Install dependencies
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Run Django collectstatic
-python manage.py collectstatic --no-input
+python3 manage.py collectstatic --no-input
