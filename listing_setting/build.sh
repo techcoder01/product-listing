@@ -7,22 +7,22 @@ then
     exit 1
 fi
 
-# Ensure distutils is installed
+# Ensure distutils and SQLite development libraries are installed
 python3 -m ensurepip --upgrade
 pip3 install setuptools
+
+# Install SQLite development libraries
+if ! dpkg -s sqlite3 libsqlite3-dev &> /dev/null
+then
+    echo "Installing SQLite development libraries..."
+    apt-get update && apt-get install -y sqlite3 libsqlite3-dev
+fi
 
 # Check if pip is installed
 if ! command -v pip3 &> /dev/null
 then
     echo "pip3 could not be found"
     exit 1
-fi
-
-# Install distutils if not already installed
-if ! python3 -c "import distutils" &> /dev/null
-then
-    echo "distutils is not installed, installing now..."
-    apt-get update && apt-get install -y python3-distutils
 fi
 
 # Install dependencies
