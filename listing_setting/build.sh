@@ -7,8 +7,10 @@ then
     exit 1
 fi
 
-# Ensure distutils is installed
+# Ensure pip is installed
 python3 -m ensurepip --upgrade
+
+# Install setuptools and distutils
 pip3 install setuptools
 
 # Check if pip is installed
